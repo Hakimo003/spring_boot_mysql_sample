@@ -60,7 +60,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: "${NAMESPACE}"
-          name: "redhat-openjdk18-openshift:1.1"
+          name: "wildfly:13.0"
     output:
       to:
         kind: ImageStreamTag
