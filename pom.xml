@@ -6,7 +6,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>easy-notes</artifactId>
 	<version>1.0.0</version>
-	<packaging>jar</packaging>
+  	<packaging>war</packaging>
 
 	<name>easy-notes</name>
 	<description>Rest API for a Simple Note Taking Application</description>
@@ -38,8 +38,19 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			    <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+      </exclusions>
 		</dependency>
-
+    <!-- We need to include the javax.servlet API specs, the implementation will be provided by Wildfly / JBoss -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -77,6 +88,21 @@
 
 	<build>
 		<plugins>
+			      <!-- This is needed so Wildfly can run a Java 10 application. -->
+      <!-- See https://jira.spring.io/browse/SPR-16990 -->
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <configuration>
+            <archive>
+                <manifestEntries>
+                    <Dependencies>jdk.unsupported</Dependencies>
+                </manifestEntries>
+            </archive>
+          </configuration>
+      </plugin>
+      <!-- OPTIONAL: Remove this plugin to reduce the WAR file size. It's not needed to deploy in an external application server. -->
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
