@@ -60,7 +60,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: "${NAMESPACE}"
-          name: openjdk:8-jdk-alpine
+          name: codecentric/springboot-maven3-centos
     output:
       to:
         kind: ImageStreamTag
