@@ -54,13 +54,13 @@ objects:
       git:
         uri: "${SOURCE_REPOSITORY_URL}"
         ref: "${SOURCE_REPOSITORY_REF}"
-    #strategy:
-     # type: Source
-      #sourceStrategy:
-       # from:
-        #  kind: ImageStreamTag
-         # namespace: "${NAMESPACE}"
-          #name: "springboot-maven3-centos:latest"
+    strategy:
+      type: Source
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          namespace: "${NAMESPACE}"
+          name: "redhat-openjdk18-openshift:1.1"
     output:
       to:
         kind: ImageStreamTag
