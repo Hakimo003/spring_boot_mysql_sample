@@ -1,0 +1,7 @@
+mysql:
+  user: ${DATABASE_USER:root}
+  password: ${DATABASE_PASSWORD:Bonjour.123}
+  database: ${DATABASE_NAME:easy_notes}
+  server:
+    host: ${DATABASE_SERVER_HOST:localhost}
+    port: ${MYSQL_SERVER_PORT:3306}

@@ -114,8 +114,6 @@ objects:
             value: "${DATABASE_USER}"
           - name: DATABASE_PASSWORD
             value: "${DATABASE_PASSWORD}"
-          - name: HELLO_MESSAGE
-            value: "${HELLO_MESSAGE}"
           resources:
             limits:
               memory: "${MEMORY_LIMIT}"
@@ -129,8 +127,8 @@ objects:
   spec:
     ports:
     - name: mysql
-      port: 3306
-      targetPort: 3306
+      port: "${DATABASE_SERVER_PORT}"
+      targetPort: "${DATABASE_SERVER_PORT}"
     selector:
       name: "${DATABASE_SERVICE_NAME}"
       
@@ -167,7 +165,7 @@ objects:
         - name: mysql
           image: " "
           ports:
-          - containerPort: 3306
+          - containerPort:  "${DATABASE_SERVER_PORT}"
           readinessProbe:
             timeoutSeconds: 1
             initialDelaySeconds: 5
@@ -182,7 +180,7 @@ objects:
             timeoutSeconds: 1
             initialDelaySeconds: 30
             tcpSocket:
-              port: 3306
+              port:  "${DATABASE_SERVER_PORT}"
           env:
           - name: MYSQL_USER
             value: "${DATABASE_USER}"
@@ -194,64 +192,82 @@ objects:
             limits:
               memory: "${MEMORY_MYSQL_LIMIT}"
 parameters:
+
 - name: NAME
   displayName: Name
   description: The name assigned to all of the frontend objects defined in this template.
   required: true
   generate: expression
-  from: java-app-[a-z0-9]{5}
+  from: easy-notes-[a-z0-9]{5}
+
 - name: NAMESPACE
   displayName: Namespace
   description: The OpenShift Namespace where the ImageStream resides.
   required: true
   value: openshift
+
 - name: MEMORY_LIMIT
   displayName: Memory Limit
   description: Maximum amount of memory the JAVA container can use.
   required: true
   value: 1024Mi
+
 - name: MEMORY_MYSQL_LIMIT
   displayName: Memory Limit (MySQL)
   description: Maximum amount of memory the MySQL container can use.
   required: true
   value: 512Mi
+
 - name: SOURCE_REPOSITORY_URL
   displayName: Git Repository URL
   description: The URL of the repository with your application source code.
   required: true
   value: https://github.com/Hakimo003/spring_boot_mysql_sample.git
+
 - name: SOURCE_REPOSITORY_REF
   displayName: Git Reference
   description: Set this to a branch name, tag or other ref of your repository if you
     are not using the default branch.
+
 - name: APPLICATION_DOMAIN
   displayName: Application Hostname
   description: The exposed hostname that will route to JAVA app service, if left blank
     a value will be defaulted.
-  value: java-app.octo.com
+  value: "easy-notes.35.181.148.166.xip.io"
+
 - name: GITHUB_WEBHOOK_SECRET
   displayName: GitHub Webhook Secret
   description: A secret string used to configure the GitHub webhook.
   generate: expression
   from: "[a-zA-Z0-9]{40}"
+
 - name: DATABASE_SERVICE_NAME
   displayName: Database Service Name
   required: true
   value: mysql
+
 - name: DATABASE_NAME
   displayName: Database Name
   required: true
-  value: default
+  value: easy-notes
+
 - name: DATABASE_USER
   displayName: Database User
   required: true
-  value: javaapp
+  value: root
+
 - name: DATABASE_PASSWORD
   displayName: Database Password
-  generate: expression
-  from: "[a-zA-Z0-9]{16}"
-- name: HELLO_MESSAGE
-  displayName: Hello Message
-  description: Hello Message.
-  value: Ahoj!
+  required: true
+  value: Bonjour.123
 
+- name: DATABASE_SERVER_HOST
+  displayName: Database Server host
+  required: true
+  value: mysql
+
+
+- name: DATABASE_SERVER_PORT
+  displayName: Database Server port
+  required: true
+  value: 3306
