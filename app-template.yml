@@ -266,7 +266,6 @@ parameters:
   required: true
   value: mysql
 
-
 - name: DATABASE_SERVER_PORT
   displayName: Database Server port
   required: true
