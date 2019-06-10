@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: spring-boot-mysql-openshift
+  profiles:
+    include:
+      - mysql
+      - db
