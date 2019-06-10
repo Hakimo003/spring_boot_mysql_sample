@@ -247,7 +247,7 @@ parameters:
 - name: DATABASE_PASSWORD
   displayName: Database Password
   required: true
-  value: Bonjour.123
+  value: "Bonjour.123"
 - name: DATABASE_SERVER_HOST
   displayName: Database Server host
   required: true
