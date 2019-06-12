@@ -12,7 +12,7 @@ items:
   spec:
     source:
       git:
-        ref: pipeline
+        ref: master
         uri: https://github.com/hakimo003/spring_boot_mysql_sample.git
       type: Git
     strategy:
