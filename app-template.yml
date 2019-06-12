@@ -56,7 +56,7 @@ objects:
           from:
             kind: ImageStreamTag
             namespace: "${NAMESPACE}"
-            name: wildfly:13
+            name: wildfly:13.0
       output:
         to:
           kind: ImageStreamTag
