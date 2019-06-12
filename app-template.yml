@@ -246,7 +246,7 @@ parameters:
   value: root
 - name: DATABASE_PASSWORD
   displayName: Database Password
-  generate: "expression",
+  generate: "expression"
   from: "[a-zA-Z0-9]{16}"
 - name: DATABASE_SERVER_HOST
   displayName: Database Server host
