@@ -182,11 +182,11 @@ objects:
             tcpSocket:
               port: 3306
           env:
-          - name: DATABASE_USER
+          - name: MYSQL_USER
             value: "${DATABASE_USER}"
-          - name: DATABASE_PASSWORD
+          - name: MYSQL_PASSWORD
             value: "${DATABASE_PASSWORD}"
-          - name: DATABASE_NAME
+          - name: MYSQL_DATABASE
             value: "${DATABASE_NAME}"
           resources:
             limits:
@@ -239,15 +239,15 @@ parameters:
 - name: DATABASE_NAME
   displayName: Database Name
   required: true
-  value: easynotes
+  value: default
 - name: DATABASE_USER
   displayName: Database User
   required: true
   value: root
 - name: DATABASE_PASSWORD
   displayName: Database Password
-  required: true
-  value: "Bonjour.123"
+  generate: "expression",
+  from: "[a-zA-Z0-9]{16}"
 - name: DATABASE_SERVER_HOST
   displayName: Database Server host
   required: true
