@@ -7,13 +7,13 @@ items:
   kind: BuildConfig
   metadata:
     annotations:
-      pipeline.alpha.openshift.io/uses: '[{"name": "cart", "namespace": "", "kind": "DeploymentConfig"}]'
-    name: cart-service-pipeline
+      pipeline.alpha.openshift.io/uses: '[{"name": "easy-notes", "namespace": "", "kind": "DeploymentConfig"}]'
+    name: easy-notes-pipeline
   spec:
     source:
       git:
         ref: pipeline
-        uri: https://github.com/hakimo003/cart-service.git
+        uri: https://github.com/hakimo003/spring_boot_mysql_sample.git
       type: Git
     strategy:
       type: JenkinsPipeline
