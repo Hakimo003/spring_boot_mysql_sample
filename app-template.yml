@@ -239,7 +239,7 @@ parameters:
 - name: DATABASE_NAME
   displayName: Database Name
   required: true
-  value: easy-notes
+  value: easynotes
 - name: DATABASE_USER
   displayName: Database User
   required: true
@@ -247,7 +247,7 @@ parameters:
 - name: DATABASE_PASSWORD
   displayName: Database Password
   required: true
-  value: root
+  value: "Bonjour.123"
 - name: DATABASE_SERVER_HOST
   displayName: Database Server host
   required: true
