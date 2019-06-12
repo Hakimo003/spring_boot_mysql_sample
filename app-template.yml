@@ -231,7 +231,7 @@ parameters:
   displayName: GitHub Webhook Secret
   description: A secret string used to configure the GitHub webhook.
   generate: expression
-  from: "[a-zA-Z0-9]{40}"
+  from: [a-zA-Z0-9]{40}
 - name: DATABASE_SERVICE_NAME
   displayName: Database Service Name
   required: true
@@ -246,7 +246,7 @@ parameters:
   value: root
 - name: DATABASE_PASSWORD
   displayName: Database Password
-  generate: "expression"
+  generate: expression
   from: "[a-zA-Z0-9]{16}"
 - name: DATABASE_SERVER_HOST
   displayName: Database Server host
