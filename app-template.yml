@@ -208,7 +208,7 @@ parameters:
     value: 512Mi
   - name: SOURCE_REPOSITORY_URL
     displayName: Git Repository URL
-    description: The URL of the repository with your application source code.
+    description: The URL of the repository with your application source code..
     required: true
     value: https://github.com/Hakimo003/spring_boot_mysql_sample.git
   - name: SOURCE_REPOSITORY_REF
