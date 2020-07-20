@@ -218,7 +218,7 @@ parameters:
   - name: APPLICATION_DOMAIN
     displayName: Application Hostname
     description: The exposed hostname that will route to Java app service, if left blank
-      a value will be defaulted.
+      a value will be defaulted..
     value: java-app.35.181.148.166.xip.io
   - name: GITHUB_WEBHOOK_SECRET
     displayName: GitHub Webhook Secret
