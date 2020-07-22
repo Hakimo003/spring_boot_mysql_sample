@@ -5,4 +5,4 @@ phases:
       - mvn clean install -DskipTests
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo Build completed on `date` -----
